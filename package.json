@@ -30,7 +30,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@phreshos/cli": "^0.1.51",
+    "@phreshos/cli": "^0.1.52",
     "@rolldown/plugin-babel": "^0.2.3",
     "@types/node": "^26.4.0",
     "@types/react": "^19.2.18",
