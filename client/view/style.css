@@ -4,7 +4,7 @@ body { font: 14px/1.5 system-ui, sans-serif; }
 button, input, textarea, select { font: inherit; }
 button { cursor: pointer; }
 button:disabled { cursor: default; }
-.workspace { height: 100%; display: grid; grid-template-columns: 224px minmax(0, 1fr); gap: 8px; padding: 8px; color: var(--board-fg); background: transparent; }
+.workspace { height: 100%; display: grid; grid-template-columns: 224px minmax(0, 1fr); gap: 8px; padding: 0 8px 8px; color: var(--board-fg); background: transparent; }
 .library { display: flex; flex-direction: column; gap: 18px; padding: 20px 14px; min-height: 0; }
 .library-title { display: flex; align-items: center; gap: 10px; }
 .library-title img { width: 38px; height: 38px; }
