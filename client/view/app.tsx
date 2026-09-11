@@ -32,7 +32,7 @@ function Workspace({ application }: { application: Application }) {
   const command = useCommand(application)
   const appearance = useSystemAppearance()
   const variables = {
-    "--board-bg": useResolveTheme(appearance.background), "--board-fg": useResolveTheme(appearance.foreground),
+    "--board-bg": useResolveTheme(appearance.colors.background), "--board-fg": useResolveTheme(appearance.colors.foreground),
     // Item colors are Board content, not aliases for the System's semantic colors.
     "--board-blue": "#538ad9", "--board-green": "#329b76",
     "--board-amber": "#c89a39", "--board-pink": "#cb6386", "--board-violet": "#9674ce"
