@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState, useSyncExternalStore, type CSSProperties } from "react"
 import { desktop, system } from "@phreshos/client"
 import { DesktopProvider, SystemProvider, useDesktopPreferences, useSystemAppearance } from "@phreshos/react"
-import { AppearanceProvider, Button, Surface, useResolveTheme } from "@phreshos/react-ui"
+import { AppearanceProvider, Button, Surface, useThemedValue } from "@phreshos/react-ui"
 import { connect } from "./connection"
 import type Application from "../core/application"
 import useCommand from "./command"
@@ -32,7 +32,7 @@ function Workspace({ application }: { application: Application }) {
   const command = useCommand(application)
   const appearance = useSystemAppearance()
   const variables = {
-    "--board-bg": useResolveTheme(appearance.colors.background), "--board-fg": useResolveTheme(appearance.colors.foreground),
+    "--board-bg": useThemedValue(appearance.colors).background, "--board-fg": useThemedValue(appearance.colors).foreground,
     // Item colors are Board content, not aliases for the System's semantic colors.
     "--board-blue": "#538ad9", "--board-green": "#329b76",
     "--board-amber": "#c89a39", "--board-pink": "#cb6386", "--board-violet": "#9674ce"
