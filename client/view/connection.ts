@@ -23,7 +23,7 @@ export function connect() {
   const stop = service.lifecycle.subscribe("stop", () => application.disconnected())
   const start = service.lifecycle.subscribe("start", () => { void application.start() })
   void application.start().then(async () => {
-    const identity = await context.option("board")
+    const identity = await context.options("board")
     if (identity) await application.open(boardRequest.parse({ board: identity }).board)
   }).catch(error => application.failed(error))
   return { application, dispose() { stop(); start(); application.dispose() } }
