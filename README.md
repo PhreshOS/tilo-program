@@ -69,6 +69,12 @@ per Board; a batch contains at most 100 operations.
 React Flow's nodes and edges are rendering details, not public Board entities.
 No particular agent, CLI, or transport defines the Board contract.
 
+`check` performs static checks, `build` creates distributable output, and `test`
+runs Vitest assertions from `tests/`. Run `build` before testing built artifacts.
+`verify` runs `check`, `build`, and `test` in order. Operational tooling belongs
+in `scripts/`; tests and their fixtures belong in `tests/`. Verification uses
+the committed dependency graph without local package substitutions.
+
 ## Related repositories
 
 - [Core](https://github.com/PhreshOS/core) defines PhreshOS domain contracts.
