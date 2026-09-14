@@ -95,11 +95,11 @@ describe("Board authority", () => {
     expect(() => edit(boards, board.identity, { action: "item.update", identity: item.identity, revision: 1, patch: { text: "Old edit" } })).toThrow("CONFLICT")
   })
 
-  it("validates all inputs, bounds, and unknown fields", () => {
+  it("validates consumed inputs and bounds while ignoring additional properties", () => {
     const boards = store(), board = boards.create({ title: "Validation" })
     expect(() => boards.create({ title: " " })).toThrow()
-    expect(() => boards.create({ title: "Board", unknown: true })).toThrow()
-    expect(() => boards.list({ unexpected: true })).toThrow()
+    expect(boards.create({ title: "Board", extension: true }).title).toBe("Board")
+    expect(() => boards.list({ extension: true })).toThrow()
     for (const width of [0, NaN, Infinity, 4001]) {
       expect(() => edit(boards, board.identity, { action: "item.add", item: { ...card(), width } })).toThrow()
     }

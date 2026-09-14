@@ -5,7 +5,7 @@ const revision = z.number().int().nonnegative()
 const coordinate = z.number().finite().min(-1_000_000).max(1_000_000)
 const size = z.number().finite().min(60).max(4000)
 export const title = z.string().trim().min(1).max(120)
-export const itemFields = z.strictObject({
+export const itemFields = z.object({
   kind: z.enum(["card", "text", "rectangle", "ellipse"]),
   text: z.string().max(20_000),
   color: z.enum(["neutral", "blue", "green", "amber", "pink", "violet"]),
@@ -13,25 +13,25 @@ export const itemFields = z.strictObject({
 })
 export const itemInput = itemFields.extend({ identity })
 export const item = itemInput.extend({ revision })
-export const connectionInput = z.strictObject({ identity, from: identity, to: identity, label: z.string().max(200) })
+export const connectionInput = z.object({ identity, from: identity, to: identity, label: z.string().max(200) })
 export const connection = connectionInput.extend({ revision })
 export const operation = z.discriminatedUnion("action", [
-  z.strictObject({ action: z.literal("item.add"), item: itemInput }),
-  z.strictObject({ action: z.literal("item.update"), identity, revision, patch: itemFields.partial().refine(value => Object.keys(value).length > 0, "An update must change at least one field") }),
-  z.strictObject({ action: z.literal("item.remove"), identity, revision }),
-  z.strictObject({ action: z.literal("connection.add"), connection: connectionInput }),
-  z.strictObject({ action: z.literal("connection.update"), identity, revision, label: z.string().max(200) }),
-  z.strictObject({ action: z.literal("connection.remove"), identity, revision })
+  z.object({ action: z.literal("item.add"), item: itemInput }),
+  z.object({ action: z.literal("item.update"), identity, revision, patch: itemFields.partial().refine(value => Object.keys(value).length > 0, "An update must change at least one field") }),
+  z.object({ action: z.literal("item.remove"), identity, revision }),
+  z.object({ action: z.literal("connection.add"), connection: connectionInput }),
+  z.object({ action: z.literal("connection.update"), identity, revision, label: z.string().max(200) }),
+  z.object({ action: z.literal("connection.remove"), identity, revision })
 ])
 export const listRequest = z.undefined()
-export const boardRequest = z.strictObject({ board: identity })
-export const createRequest = z.strictObject({ title })
+export const boardRequest = z.object({ board: identity })
+export const createRequest = z.object({ title })
 export const renameRequest = boardRequest.extend({ title, revision })
 export const deleteRequest = boardRequest.extend({ revision })
 export const applyRequest = boardRequest.extend({ request: identity, operations: z.array(operation).min(1).max(100) })
 export const historyRequest = boardRequest.extend({ after: z.number().int().min(-1).default(-1), limit: z.number().int().min(1).max(100).default(30) })
-export const historyOperation = z.union([z.array(operation), z.strictObject({ action: z.enum(["board.create", "board.rename"]), title })])
-export const snapshot = z.strictObject({
+export const historyOperation = z.union([z.array(operation), z.object({ action: z.enum(["board.create", "board.rename"]), title })])
+export const snapshot = z.object({
   identity, title, revision,
   createdAt: z.string(), updatedAt: z.string(),
   items: z.array(item).max(1000), connections: z.array(connection).max(3000)
