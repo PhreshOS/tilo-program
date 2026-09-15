@@ -8,7 +8,7 @@ export function connect() {
   async function ready() {
     if (!await service.exists()) {
       const program = await context.program()
-      await program.process.findOrCreate({ name: "tilo-server", server: { service: true }, client: false })
+      await program.findOrCreateProcess({ name: "tilo-server", server: { service: true }, client: false })
     }
     await service.waitReady(30_000)
   }
