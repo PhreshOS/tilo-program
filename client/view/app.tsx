@@ -15,8 +15,8 @@ export default function App() {
 }
 function Theme() {
   const appearance = useSystemAppearance()
-  const { theme } = useDesktopPreferences()
-  return <AppearanceProvider appearance={appearance} theme={theme}><Session /></AppearanceProvider>
+  const preferences = useDesktopPreferences()
+  return <AppearanceProvider appearance={appearance} preferences={preferences}><Session /></AppearanceProvider>
 }
 function Session() {
   const [application, setApplication] = useState<Application | null>(null)

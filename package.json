@@ -1,6 +1,6 @@
 {
   "name": "tilo",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": true,
   "type": "module",
   "description": "A shared visual whiteboard for people and agents.",
@@ -22,7 +22,7 @@
     "@phreshos/client": "^0.1.43",
     "@phreshos/core": "^0.1.49",
     "@phreshos/react": "^0.1.25",
-    "@phreshos/react-ui": "^0.1.22",
+    "@phreshos/react-ui": "^0.1.23",
     "@phreshos/server": "^0.1.47",
     "@xyflow/react": "^12.11.6",
     "react": "^19.2.8",
