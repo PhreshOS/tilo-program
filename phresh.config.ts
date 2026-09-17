@@ -12,8 +12,8 @@ export default defineConfig({
   keywords: ["whiteboard", "canvas", "collaboration"],
   buildCommand: "vite-node scripts/build.ts",
   server: {
-    location: "dist/server", entryFile: "main.js", start: false, service: true,
-    development: { startCommand: "vite-node server/main.ts" }
+    location: "dist/server", worker: "main.js", start: false, service: true,
+    development: { command: "vite-node server/main.ts" }
   },
   client: {
     location: "dist/client", title: "Tilo", size: { width: 1200, height: 780 },
