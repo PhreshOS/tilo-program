@@ -1,6 +1,6 @@
 {
   "name": "tilo",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "private": true,
   "type": "module",
   "description": "A shared visual whiteboard for people and agents.",
@@ -19,11 +19,11 @@
     "verify": "node --run check && node --run build && node --run test"
   },
   "dependencies": {
-    "@phreshos/client": "^0.1.45",
-    "@phreshos/core": "^0.1.52",
-    "@phreshos/react": "^0.1.27",
-    "@phreshos/react-ui": "^0.1.27",
-    "@phreshos/server": "^0.1.49",
+    "@phreshos/client": "^0.1.46",
+    "@phreshos/core": "^0.1.53",
+    "@phreshos/react": "^0.1.28",
+    "@phreshos/react-ui": "^0.1.28",
+    "@phreshos/server": "^0.1.50",
     "@xyflow/react": "^12.11.6",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
