@@ -16,6 +16,28 @@ To display a Board, create a Client-only Process of this Program with its launch
 `options.board` set to the Board identity. A Client can also choose a Board from
 its library. No Client is required for API operations.
 
+## Execute interface
+
+Expose Tilo through the shared Execute request contract. Resolve its
+authoritative Server with:
+
+```json
+{
+  "$domain": "process",
+  "$operation": "findOrCreate",
+  "program": "tilo",
+  "launch": {
+    "name": "tilo-server",
+    "server": { "service": true },
+    "client": false
+  }
+}
+```
+
+Send every operation below through `endpoint.ask` using `program: "tilo"`,
+`process: "tilo-server"`, `endpoint: "server"`, the documented request name as
+`event`, and its payload as `input`.
+
 ## Operations
 
 Request payloads are objects. Unknown fields and invalid values are rejected.
