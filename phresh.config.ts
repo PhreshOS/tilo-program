@@ -3,7 +3,7 @@ import { defineConfig } from "@phreshos/core"
 export default defineConfig({
   identity: "tilo",
   name: "Tilo",
-  version: "0.1.11",
+  version: "0.1.12",
   description: "A shared visual whiteboard for people and agents.",
   website: "https://github.com/PhreshOS/tilo-program",
   icon: "icon.png",
@@ -13,10 +13,10 @@ export default defineConfig({
   buildCommand: "vite-node scripts/build.ts",
   server: {
     location: "dist/server", worker: "main.js", start: false, service: true,
-    development: { command: "vite-node server/main.ts" }
+    devCommand: "vite-node server/main.ts"
   },
   client: {
     location: "dist/client", title: "Tilo", size: { width: 1200, height: 780 },
-    development: { startCommand: "vite --config vite.client.ts" }
+    devCommand: "vite --config vite.client.ts"
   }
 })
