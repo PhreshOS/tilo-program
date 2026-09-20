@@ -4,9 +4,9 @@ import Application from "../core/application"
 
 /** The Client SDK adapter is outside the Tilo application's contract. */
 export function connect() {
-  const service = system.service<BoardEvents>({ program: "tilo", process: "tilo-server", endpoint: "server" })
+  const service = system.service.prepare<BoardEvents>({ program: "tilo", process: "tilo-server", endpoint: "server" })
   async function ready() {
-    if (!await service.exists()) {
+    if (!await service.available()) {
       const program = await context.program()
       await program.findOrCreateProcess({ name: "tilo-server", server: { service: true }, client: false })
     }
@@ -20,11 +20,11 @@ export function connect() {
     subscribe(receive) { return service.subscribe("board.changed", receive) }
   }
   const application = new Application(api)
-  const stop = service.lifecycle.subscribe("stop", () => application.disconnected())
-  const start = service.lifecycle.subscribe("start", () => { void application.start() })
+  const unavailable = service.lifecycle.subscribe("unavailable", () => application.disconnected())
+  const available = service.lifecycle.subscribe("available", () => { void application.start() })
   void application.start().then(async () => {
     const identity = await context.options("board")
     if (identity) await application.open(boardRequest.parse({ board: identity }).board)
   }).catch(error => application.failed(error))
-  return { application, dispose() { stop(); start(); application.dispose() } }
+  return { application, dispose() { unavailable(); available(); application.dispose() } }
 }
