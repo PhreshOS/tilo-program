@@ -7,6 +7,6 @@ export default defineConfig({
   root: "client",
   plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
   base: process.env.PHRESHOS_CLIENT_BASE ?? "./",
-  server: { port: Number(process.env.PHRESHOS_CLIENT_PORT ?? "5200"), strictPort: true },
+  server: { host: process.env.PHRESHOS_CLIENT_HOST, port: Number(process.env.PHRESHOS_CLIENT_PORT ?? "5200"), strictPort: true },
   build: { emptyOutDir: true, outDir: resolve(import.meta.dirname, "dist/client") }
 })
