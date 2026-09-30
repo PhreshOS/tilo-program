@@ -19,11 +19,11 @@
     "verify": "node --run check && node --run build && node --run test"
   },
   "dependencies": {
-    "@phreshos/client": "^0.1.54",
-    "@phreshos/core": "^0.1.65",
-    "@phreshos/react": "^0.1.34",
-    "@phreshos/react-ui": "^0.1.47",
-    "@phreshos/server": "^0.1.59",
+    "@phreshos/client": "^0.1.58",
+    "@phreshos/core": "^0.1.68",
+    "@phreshos/react": "^0.1.36",
+    "@phreshos/react-ui": "^0.1.50",
+    "@phreshos/server": "^0.1.61",
     "@xyflow/react": "^12.11.6",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
