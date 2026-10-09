@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState, useSyncExternalStore, type CSSProperties } from "react"
 import { desktop, system } from "@phreshos/client"
-import { DesktopProvider, SystemProvider, useDesktopPreferences, useSystemAppearance } from "@phreshos/react"
+import { DesktopProvider, SystemProvider, useResolvedDesktopPreferences, useSystemAppearance } from "@phreshos/react"
 import { DocumentTheme, UIProvider, Button, Surface, useThemedValue } from "@phreshos/react-ui"
 import { connect } from "./connection"
 import type Application from "../core/application"
@@ -15,7 +15,7 @@ export default function App() {
 }
 function Theme() {
   const appearance = useSystemAppearance()
-  const preferences = useDesktopPreferences()
+  const preferences = useResolvedDesktopPreferences()
   return <UIProvider appearance={appearance} preferences={preferences}><DocumentTheme /><Session /></UIProvider>
 }
 function Session() {
