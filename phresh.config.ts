@@ -3,7 +3,7 @@ import { defineConfig } from "@phreshos/core"
 export default defineConfig({
   identity: "tilo",
   name: "Tilo",
-  version: "0.2.1",
+  version: "0.3.0",
   description: "A shared visual whiteboard for people and agents.",
   website: "https://github.com/PhreshOS/tilo-program",
   icon: "icon.png",
